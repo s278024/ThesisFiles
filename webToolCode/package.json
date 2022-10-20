@@ -1,0 +1,26 @@
+{
+  "name": "tesi_def",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "concept-net": "^0.4.0",
+    "express": "^4.17.3",
+    "htl": "^0.3.1",
+    "multer": "^1.4.4",
+    "nodemon": "^2.0.15",
+    "papaparse": "^5.3.2",
+    "solc": "^0.8.13",
+    "sqlite3": "^5.0.6",
+    "surya": "^0.4.5",
+    "web3": "^1.7.3"
+  }
+}

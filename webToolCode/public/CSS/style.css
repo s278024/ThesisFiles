@@ -1,0 +1,60 @@
+
+#form_contract{
+    padding-top: 220px;
+    padding-left:150px;
+    padding-right:150px;
+    z-index: -1;
+}
+
+#mainMenu{
+    background: rgb(143, 148, 151);
+    width: 100%;
+    padding:10px;
+    padding-left:150px;
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+}
+
+#formFile{
+    margin-top: 50px;
+}
+
+svg{
+    padding-top: 200px;
+}
+
+.legend{
+    position: relative;
+    top: 80px;
+    left: 30px;
+}
+
+.bubbles {
+    stroke-width: 1px;
+    stroke: black;
+    opacity: .8;
+  }
+  .bubbles:hover {
+    stroke: black;
+  }
+
+.form-floating{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#zoomableCirclePacking{
+    position: relative;
+    right: -250px;
+}
+
+#bubblePlot{
+    position: relative;
+    right: -250px;
+}
+
+#scatterPlotMatrix{
+    position: relative;
+    right: -250px;
+}

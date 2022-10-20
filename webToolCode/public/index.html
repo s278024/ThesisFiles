@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <link href="/CSS/style.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <title>VISUALIZZAZIONE CONTRATTI</title>
+    </head>
+    <body>     
+        <div id="mainMenu">
+            <h1>VISUALIZZAZIONE CONTRATTI</h1>
+            <div class="btn-group" style="display:none"  id="menu">
+                <button type="button" class="btn btn-danger" onclick="resetStyle()">Contract Text</button> 
+                <button type="button" class="btn btn-danger" onclick="visibilityStyle()">Function Visibility</button>
+                <button type="button" class="btn btn-danger" onclick="fallReceiveStyle()">Function Type</button>
+                <button type="button" class="btn btn-danger" onclick="payableStyle()">Function Payable</button>
+                <button type="button" class="btn btn-danger" onclick="functionRelation()">Function Relation</button>
+            </div>
+            <div id="legendaVisibility" style="display:none" class="row">
+                <table class="table">
+                    <tbody>
+                        <tr class="row">
+                            <td class="col-2" style="border:0px;">
+                                <label for="InternalColorInput" class="form-label">Internal</label>
+                                <input type="color" class="form-control form-control-color" id="InternalColorInput" value="#a7ecde" title="Choose your color" onchange="visibilityStyle()">
+                            </td>
+                            <td class="col-2" style="border:0px;">
+                                <label for="ExternalColorInput" class="form-label">External</label>
+                                <input type="color" class="form-control form-control-color" id="ExternalColorInput" value="#dfee6d" title="Choose your color" onchange="visibilityStyle()">
+                            </td>
+                            <td class="col-2" style="border:0px;">
+                                <label for="PrivateColorInput" class="form-label">Private</label>
+                                <input type="color" class="form-control form-control-color" id="PrivateColorInput" value="#74f051" title="Choose your color" onchange="visibilityStyle()"> 
+                            </td>
+                            <td class="col-2" style="border:0px;">
+                                <label for="PublicColorInput" class="form-label">Public</label>
+                                <input type="color" class="form-control form-control-color" id="PublicColorInput" value="#f4a64e" title="Choose your color" onchange="visibilityStyle()"> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="legendaType" style="display:none" class="row">
+                <table class="table">
+                    <tbody>
+                        <tr class="row">
+                            <td class="col-2" style="border:0px;">
+                                <label for="ConstructorColorInput" class="form-label">Constructor</label>
+                                <input type="color" class="form-control form-control-color" id="ConstructorColorInput" value="#a7ecde" title="Choose your color" onchange="fallReceiveStyle()">
+                            </td>
+                            <td class="col-2" style="border:0px;">
+                                <label for="FallbackColorInput" class="form-label">Fallback</label>
+                                <input type="color" class="form-control form-control-color" id="FallbackColorInput" value="#dfee6d" title="Choose your color" onchange="fallReceiveStyle()">
+                            </td>
+                            <td class="col-2" style="border:0px;">
+                                <label for="ReceiveEtherColorInput" class="form-label">Receive Ether</label>
+                                <input type="color" class="form-control form-control-color" id="ReceiveEtherColorInput" value="#74f051" title="Choose your color" onchange="fallReceiveStyle()"> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="legendaPayable" class="row" style="display:none;">
+                <table class="table">
+                    <tbody>
+                        <tr class="row">
+                            <td class="col-2" style="border:0px;">
+                                <label for="PayableColorInput" class="form-label">Payable</label>
+                                <input type="color" class="form-control form-control-color" id="PayableColorInput" value="#a7ecde" title="Choose your color" onchange="payableStyle()">
+                            </td>
+                            <td class="col-2" style="border:0px;">
+                                <label for="MutatingColorInput" class="form-label">Mutating</label>
+                                <input type="color" class="form-control form-control-color" id="MutatingColorInput" value="#dfee6d" title="Choose your color" onchange="payableStyle()">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div id="grafici">
+            <!--
+                Qui verranno visualizzati i grafici
+            -->
+        </div>
+        <div id="form_contract">   
+            <div id="corpo_contratto">
+                <!--
+                    Qui verrà visualizzato il corpo del contratto
+                -->      
+            </div>
+            <div class="mb-3" id="formFile">
+                <form action="/upload" method="POST" enctype="multipart/form-data">
+                    <label for="file" class="form-label">Choose file solidity to upload</label>
+                    <input type="file" id="file" name="file" class="form-control">
+                    <button type="submit" value="Carica" class="form-control">Submit</button>
+                </form>
+            </div>
+            <div class="mb-3" id="formFileMultiple">
+                <form action="/abi" method="POST" enctype="multipart/form-data" name="formFileMultiple">
+                    <label for="filemultiple" class="form-label">Choose file solidity to upload</label>
+                    <input type="file" id="filemultiple" name="filemultiple" class="form-control" multiple>
+                    <button type="submit" value="filemultiple" class="form-control">Submit</button>
+                </form>
+            </div>  
+        </div>
+        <script src="/scripts/sendFiles.js"></script>
+        <script src="/scripts/functionRelation.js"></script>
+        <script src="/scripts/styleDescriptors.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+
+
+</html>
